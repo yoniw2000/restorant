@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title> Restaurant</title>
+    <link rel="stylesheet" type="text/css" href="restaurant.css">
+
+    </head>
+
+    <body onload="">
+        <script src="https://kit.fontawesome.com/717009c62e.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <div class="toolBar">
+            <ul>
+                <li><a href="#logo">Home</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="live shows.html">live shows</a></li>
+                <li><a href="#contact">Contact</a>
+            </ul>
+        </div>
+
+        <div class="logo" id="logo">
+            <div class="logo_contant">
+                <p id="res_name" class="yellow">Smirking Rooster Spot</p>
+                <address class="white">
+                    22 ocean avenue <br />  los angeles, CA 83759 Open from<p class="yellow"> 5PM - 2AM</p>
+                </address>
+            </div>
+        </div>
+
+        <div class="About" id="About">
+            <h3>  Welcome To The Smirking Rooster Spot! 🐔</h3>
+            <p>
+                Located on the rooftop of the 1 Hotel, preserves the values of an old-fashioned cocktail lounge. Revelry with a view, our bar is stocked with fresh and seasonal ingredients alongside some of the finest and approachable spirits.
+                Open  from 5PM - 2AM
+            </p>
+        </div>
+
+        <div class="Music_and_happyHour">
+            <div class="happyHour">
+                <div class="happyHour_img"></div>
+                <div class="happyHour_text">
+                    <h4 class="yellow">Happy Hour</h4>
+                    <h1>CRAFT BEER TUESDAY</h1>
+                    <p class="yellow"> We have a super unique cocktail list that changes with the season. If nothing strikes your fancy, you can tell one of the talented mixologists what kind of flavors you like, and they will make you something unique! As a bonus, they even have 50% off cocktails from 6-8 PM.</p>
+                </div>
+            </div>
+
+            <div class="Music">
+                <div class="Music_text">
+                    <h4 class="yellow">MUSIC</h4>
+                    <h1>
+                        Next Show The front bottoms
+                    </h1>
+                    <p class="yellow"> The Front Bottoms are an American folk punk band from  New Jersey. The band consists of vocalist and guitarist Brian Sella, drummer Mat Uychich, and guitarist and vocalist Tom Warren.</p>
+                </div>
+                <div class="singer_img"></div>
+            </div>
+        </div>
+
+        <div class="slidshow">
+
+            <img class="pic_slid" src="imgs/beer.png" alt="picture can not be loaded">
+            <img class="pic_slid" src="imgs/bar.jpg" alt="picture can not be loaded">
+            <img class="pic_slid" src="imgs/singer.jpg" alt="picture can not be loaded">
+            <img class="pic_slid" src="imgs/beer.png" alt="picture can not be loaded">
+
+            <div class="buttons_of_slidshow">
+                <!-- The dots/circles -->
+                <div style="text-align:center" class="box_dots">
+                    <span class="dot" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+
+            </div>
+        </div>
+        <hr /> <hr style="border: 2px dashed #ff8c1a;" /><hr />
+
+        <form id="contact">
+            <div>
+                <h2>
+                    <span class="yellow" style="font-size: 40px;">contact us</span><br />
+                    Send us a message and we’ll get back to you as soon as possible.Looking forward to hearing from you!
+                </h2>
+            </div>
+            <div class="container_contact">
+                <input type="text" name="name" placeholder="Name" class="input" /><br />
+                <input type="email" name="email" placeholder="Email" class="input" /><br />
+                <textarea type="text" name="message" placeholder="Message" class="input"></textarea><br />
+                <button id="submit" type="submit" class="myButton">  Send! </button>
+            </div>
+        </form>
+
+        <div id="map"></div>
+        
+            <div id="buttons" >
+                <span class="zocial facebook"></span>
+                <span class="zocial twitter"></span>
+                <span class="zocial github"></span>  <span class="zocial linkedin"></span>
+                <h5 style="color:white" >© 2019 by MR J.Proudly created with visual studio code </h5>
+            </div>
+        
+
+        <script>
+            var slideIndex = 3;
+            showDivs(slideIndex);
+            function plusDivs(n) {
+                showDivs(slideIndex += n);
+            }
+            function currentSlide(n) {
+                var i;
+                var x = document.getElementsByClassName("pic_slid");
+                var y = document.getElementsByClassName("dot");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                    y[i].style.backgroundColor = "white";
+                }
+                x[n].style.display = "block";
+                y[n].style.backgroundColor = "#ff8c1a";
+                slideIndex = n;
+                clearTimeout(intervali);
+                intervali = setInterval(automatic, 3000);
+            }
+            function showDivs(n) {
+                var i;
+                var x = document.getElementsByClassName("pic_slid");
+                var y = document.getElementsByClassName("dot");
+                if (n > x.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = x.length };
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+
+                }
+                x[0].style.display = "block";
+                y[3].style.backgroundColor = "#ff8c1a";
+            }
+
+            var intervali = setInterval(automatic, 3000); // Change image every 2 seconds
+            function automatic() {
+                var i;
+                var y = document.getElementsByClassName("dot");
+                var x = document.getElementsByClassName("pic_slid");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                    y[i].style.backgroundColor = "white";
+                }
+                slideIndex++;
+                if (slideIndex > x.length) { slideIndex = 1 }
+                x[slideIndex - 1].style.display = "block";
+                y[slideIndex - 1].style.backgroundColor = "#ff8c1a";
+            }
+        </script>
+
+
+
+        <script>
+            // Initialize and add the map
+            function initMap() {
+                // The location of Uluru
+                var uluru = { lat: -25.344, lng: 131.036 };
+                // The map, centered at Uluru
+                var map = new google.maps.Map(
+                    document.getElementById('map'), { zoom: 4, center: uluru });
+                // The marker, positioned at Uluru
+                var marker = new google.maps.Marker({ position: uluru, map: map });
+            }
+        </script>
+        <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function -->
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDarrLvNEI2FgEAmdUBtiCdZnlWKzlg1gI&callback=initMap">
+        </script>
+
+    </body>
+</html>
+
